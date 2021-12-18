@@ -8,7 +8,7 @@ interface Props {
 const HeroTitle: FunctionComponent<Props> = ({ title }) => {
   return (
     <div className="w-3/4 h-full absolute top-0 px-28 flex items-center justify-between">
-      <div className="text-5xl font-medium pb-16">
+      <div className="text-5xl font-medium">
         <div className="text-6xl font-black text-yellow-500 w-96">Save </div>
         {title}
       </div>

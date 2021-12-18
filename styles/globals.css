@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .bgWrap {
-    background-image: url("/images/save.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 70vh;
+  background-image: url("/images/save.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 90vh;
 }
