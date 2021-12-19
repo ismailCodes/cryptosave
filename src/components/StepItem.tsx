@@ -8,7 +8,7 @@ interface Props {
 const StepItem: FunctionComponent<Props> = ({ step, text }) => {
   return (
     <div className="flex items-center my-3">
-      <div className="h-10 w-10 text-base flex items-center justify-center border-2 border-yellow-500 rounded-sm mr-2">
+      <div className="h-10 w-10 text-base flex items-center justify-center border-2 border-gray-700 rounded-full mr-2">
         {step}
       </div>
       <div className="text-lg">{text}</div>

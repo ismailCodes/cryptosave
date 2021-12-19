@@ -4,7 +4,7 @@ import { useGlobalContext } from "../Hooks/useGlobalContext";
 import Button from "./Button";
 import HeroImage from "./HeroImage";
 import HeroTitle from "./HeroTitle";
-import HeroWrapper from "./HeroWrapper";
+import PageWrapper from "./PageWrapper";
 
 interface Props {
   title: string;
@@ -15,7 +15,7 @@ const Hero: FunctionComponent<Props> = ({ title }) => {
   const { user, loggedIn } = useGlobalContext();
 
   return (
-    <HeroWrapper>
+    <PageWrapper>
       <HeroImage />
       <HeroTitle title={title} />
       {!loggedIn ? (
@@ -23,7 +23,7 @@ const Hero: FunctionComponent<Props> = ({ title }) => {
       ) : (
         <Button text="Save My Money" action={() => {}} />
       )}
-    </HeroWrapper>
+    </PageWrapper>
   );
 };
 
