@@ -9,7 +9,7 @@ const HeroTitle: FunctionComponent<Props> = ({ title }) => {
   return (
     <div className="w-3/4 h-full absolute top-0 px-28 flex items-center justify-between">
       <div className="text-5xl font-medium">
-        <div className="text-6xl font-black text-black w-96 underline underline-offset-2 leading-relaxed">
+        <div className="text-6xl font-black text-white w-96 leading-relaxed first-letter:text-yellow-400">
           Save{" "}
         </div>
         {title}

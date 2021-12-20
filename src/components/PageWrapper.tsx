@@ -6,7 +6,7 @@ interface Props {
 
 const PageWrapper: FunctionComponent<Props> = ({ children }) => {
   return (
-    <div className="w-screen h-screen relative flex flex-col items-center font-serif bg-yellow-500/50">
+    <div className="w-screen h-screen relative text-white flex flex-col items-center font-serif bg-black">
       {children}
     </div>
   );
