@@ -18,7 +18,7 @@ const HeroTitle: FunctionComponent<Props> = ({ title }) => {
         <StepItem step={1} text="Connect your wallet" />
         <StepItem step={2} text="Choose an amount" />
         <StepItem step={3} text="Set a withdraw date" />
-        <StepItem step={4} text="Save your money" />
+        <StepItem step={4} text="Deposit your Savings" />
       </div>
     </div>
   );
