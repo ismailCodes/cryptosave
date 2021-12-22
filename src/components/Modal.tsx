@@ -32,20 +32,18 @@ const Modal: FunctionComponent<ModalProps> = ({
   const modalContent: React.ReactNode | null = show ? (
     <div className="w-screen h-screen bg-black z-50 absolute top-0 bg-opacity-70 bg-white/5 backdrop-blur-sm">
       <div className="w-full h-full flex justify-center items-center">
-        <div className="w-1/3 h-3/12 bg-white relative flex flex-col">
+        <div className="w-1/3 h-3/12 bg-white relative flex flex-col p-6">
           <div
-            className="absolute top-2 right-2 bg-white text-black font-bold text-2xl p-3 px-6 rounded-full cursor-pointer"
+            className="absolute top-2 right-2 bg-gray-50 text-black font-bold text-2xl rounded-full cursor-pointer mr-3"
             // href="#"
             onClick={(e) => handleCloseClick(e)}
           >
             x
           </div>
-          <div className="text-black font-bold w-full text-2xl pt-5 pl-5">
+          <div className="text-black font-bold w-full text-2xl mb-6">
             {title}
           </div>
-          <div className="h-full p-6 pt-4 overflow-scroll flex flex-col">
-            {children}
-          </div>
+          <div className="h-full overflow-hidden flex flex-col">{children}</div>
         </div>
       </div>
     </div>
