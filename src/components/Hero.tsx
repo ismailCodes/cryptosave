@@ -9,34 +9,23 @@ import PageWrapper from "./PageWrapper";
 import Link from "next/link";
 import Modal from "./Modal";
 import SavingForm from "./SavingForm";
+import NavBar from "./Nav";
 
-interface Props {
-  title: string;
-}
-
-const Hero: FunctionComponent<Props> = ({ title }) => {
-  const getAccount = useAccount();
-  const { user, loggedIn } = useGlobalContext();
+const Hero: FunctionComponent = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <PageWrapper>
-      <Modal show={showModal} onClose={setShowModal} title={"Save Your Money"}>
+      <NavBar setShowModal={setShowModal} />
+      <Modal
+        show={showModal}
+        onClose={setShowModal}
+        title={"Deposit your Savings"}
+      >
         <SavingForm />
       </Modal>
-      <Logo />
       <HeroImage />
-      <HeroTitle title={title} />
-      {!loggedIn ? (
-        <Button text="Connect Wallet" action={getAccount} />
-      ) : (
-        <Button
-          text="Save My Money"
-          action={() => {
-            setShowModal(true);
-          }}
-        />
-      )}
+      <HeroTitle />
     </PageWrapper>
   );
 };

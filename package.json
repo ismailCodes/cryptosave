@@ -8,8 +8,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "chai": "^4.3.4",
     "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.4.0",
     "hardhat": "^2.8.0",
     "next": "12.0.7",
     "react": "17.0.2",
@@ -19,6 +21,8 @@
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",
+    "@nomiclabs/hardhat-etherscan": "^2.1.8",
+    "@typechain/hardhat": "^3.0.0",
     "@types/chai": "^4.3.0",
     "@types/jest": "^27.0.3",
     "@types/node": "17.0.0",
@@ -27,8 +31,11 @@
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
     "ethers": "^5.5.2",
+    "hardhat-gas-reporter": "^1.0.6",
     "postcss": "^8.4.5",
+    "solidity-coverage": "^0.7.17",
     "tailwindcss": "^3.0.7",
+    "ts-node": "^10.4.0",
     "typescript": "4.5.4"
   }
 }

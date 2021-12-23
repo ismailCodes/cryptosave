@@ -17,10 +17,7 @@ contract MoneySaver {
 
     //requires the user to save money for at least one day
     modifier onlyValidTime(uint256 _endTime) {
-        require(
-            _endTime > 1 days,
-            "You should save money for more than 20 seconds"
-        );
+        require(_endTime > 1 days, "End-time very short");
         _;
     }
 
@@ -54,7 +51,6 @@ contract MoneySaver {
         public
         payable
         onlyPositive(msg.value)
-        onlyValidTime(_endTime)
         onlyValidBalance
     {
         balances[msg.sender].balance += msg.value;

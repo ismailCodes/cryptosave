@@ -9,7 +9,7 @@ const Button: FunctionComponent<Props> = ({ text, action }) => {
   return (
     <>
       <button
-        className="bg-yellow-400 text-gray-800 rounded-md font-medium px-4 py-2 cursor-pointer z-50 absolute top-5 right-36"
+        className="bg-transparent text-gray-50 rounded-sm text-sm md:text-base font-medium px-6 py-1 cursor-pointer z-50 border border-gray-50"
         onClick={async () => await action()}
       >
         {text}

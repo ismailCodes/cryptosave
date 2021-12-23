@@ -27,25 +27,29 @@ const SavingForm: NextPage = () => {
   return (
     <div className="w-full flex justify-center items-center">
       <form
-        className="flex flex-col items-center px-4 w-11/12 h-full justify-center"
+        className="flex flex-col justify-center w-full h-full"
         onSubmit={handleSubmit(onSubmit)}
       >
-        {/* <div className="font-medium w-11/12 text-center text-lg text-gray-900 px-4 rounded-md py-2 mb-6">
-          Pick a date and amount to Save your Money
-        </div> */}
+        <label htmlFor="amount">
+          What is the amount of your future savings?
+        </label>
+        <input
+          name="amount"
+          placeholder="Amount"
+          type="number"
+          className="h-10 w-5/12 my-4 px-4 border border-gray-300 text-gray-80 font-medium text-gray-900"
+          {...register("exampleRequired", { required: true })}
+        />
+        <label htmlFor="amount">
+          Whaen do you plan to withdraw your savings?
+        </label>
+
         <div className="w-full flex justify-between">
           <DatePicker
             placeholderText="Select Date"
             // selected={startDate}
             onChange={(date) => setStartDate(date)}
-            className="h-10 w-11/12 my-4 px-4 border border-gray-300 text-gray-80 font-medium text-gray-900 mx-6"
-          />
-
-          <input
-            placeholder="Amount"
-            type="number"
-            className="h-10 w-5/12 my-4 px-4 border border-gray-300 text-gray-80 font-medium text-gray-900"
-            {...register("exampleRequired", { required: true })}
+            className="h-10 w-11/12 my-4 px-4 border border-gray-300 text-gray-80 font-medium text-gray-900"
           />
         </div>
 
@@ -53,7 +57,7 @@ const SavingForm: NextPage = () => {
         <input
           className="bg-yellow-400/70 text-gray-800 font-medium px-10 py-3 cursor-pointer rounded-lg"
           type="submit"
-          value="Save"
+          value="Deposit my savings"
         />
       </form>
     </div>
