@@ -9,13 +9,16 @@ interface Props {
 }
 
 const NavBar: FunctionComponent<Props> = ({ setShowModal }) => {
-  const getAccount = useAccount();
-  const { loggedIn } = useGlobalContext();
+  const { login, logout } = useAccount();
+  const { user, loggedIn } = useGlobalContext();
   return (
     <div className="absolute w-full flex justify-center mt-5">
       <div className="w-11/12 flex justify-between">
         <Logo />
-        <Button text="Login" action={getAccount} />
+        <Button
+          text={loggedIn ? "Logout" : "Login"}
+          action={loggedIn ? logout : login}
+        />
       </div>
     </div>
   );

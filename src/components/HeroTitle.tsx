@@ -1,7 +1,14 @@
+import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
+import useAccount from "../Hooks/useAccount";
+import { useGlobalContext } from "../Hooks/useGlobalContext";
 import StepItem from "./StepItem";
 
 const HeroTitle: FunctionComponent = () => {
+  const router = useRouter();
+  const { loggedIn } = useGlobalContext();
+  const { login } = useAccount();
+
   return (
     <div
       className="w-full md:w-3/4 lg:w-10/12
@@ -13,8 +20,17 @@ const HeroTitle: FunctionComponent = () => {
             Save
           </div>
           is your Free crypto-saving Jar
-          <button className="bg-yellow-400 text-black px-4 text-base py-2 mt-4 mb-12 lg:w-40 hidden lg:block">
-            Get a free Jar
+          <button
+            className="bg-yellow-400 text-black px-4 text-base py-2 mt-4 mb-12 lg:w-40 hidden lg:block"
+            onClick={
+              loggedIn
+                ? () => {
+                    router.push("/profile ");
+                  }
+                : login
+            }
+          >
+            {!loggedIn ? "Get a free Jar" : "Go to profile"}
           </button>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/3 text-2xl first-letter:text-6xl first-letter:font-extrabold justify-center mt-8 lg:mt-0 pl-auto">
@@ -24,8 +40,17 @@ const HeroTitle: FunctionComponent = () => {
           <StepItem step={4} text="Deposit your Savings" />
         </div>
       </div>
-      <button className="bg-yellow-400 text-black px-10 py-2 mt-4 mb-12 lg:hidden">
-        Get a free Jar
+      <button
+        className="bg-yellow-400 text-black px-10 py-2 mt-4 mb-12 lg:hidden"
+        onClick={
+          loggedIn
+            ? () => {
+                router.push("/profile ");
+              }
+            : login
+        }
+      >
+        {!loggedIn ? "Get a free Jar" : "Go to profile"}
       </button>
     </div>
   );
