@@ -13,7 +13,7 @@ const SavingContractAddress = "0x6767C11e0A68d9a37e031979d7fF8121f308b905";
 
 const useSave: Function = (): {} => {
   const { user } = useGlobalContext();
-  const getAccount = useAccount();
+  const { login } = useAccount();
 
   const fetchBalance: Function = async (address: string): Promise<any> => {
     if (!address) return;
@@ -45,7 +45,7 @@ const useSave: Function = (): {} => {
   const deposit: Function = async (endTime: number): Promise<any> => {
     console.log({ user });
     if (typeof window.ethereum !== "undefined") {
-      await getAccount();
+      await login();
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(
@@ -57,11 +57,13 @@ const useSave: Function = (): {} => {
 
       try {
         const transaction = await contract.deposit(endTime, {
-          value: ethers.utils.parseEther("0.001"),
+          from: user,
+          value: ethers.utils.parseEther("0.0001"),
           gasPrice,
-          gasLimit: 9000000,
+          gasLimit: ethers.utils.hexlify(100000),
+          nonce: provider.getTransactionCount(user),
         });
-        const txReceipt = await transaction.wait();
+        const txReceipt = await signer.sendTransaction(transaction);
         console.log({ txReceipt });
         return null;
       } catch (error) {

@@ -4,11 +4,7 @@ import { useGlobalContext } from "../Hooks/useGlobalContext";
 import Button from "./Button";
 import Logo from "./Logo";
 
-interface Props {
-  setShowModal: (showModal: boolean) => void;
-}
-
-const NavBar: FunctionComponent<Props> = ({ setShowModal }) => {
+const NavBar: FunctionComponent = () => {
   const { login, logout } = useAccount();
   const { user, loggedIn } = useGlobalContext();
   return (

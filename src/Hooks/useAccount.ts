@@ -14,6 +14,7 @@ export default function useAccount() {
 
   const logout = () => {
     setLoggedIn(false);
+    setUser("");
     localStorage.removeItem("user");
   };
 

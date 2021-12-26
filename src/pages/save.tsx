@@ -10,7 +10,7 @@ import { ethers } from "ethers";
 const Saver: NextPage = () => {
   const { fetchBalance, deposit } = useSave();
   const { user, loggedIn } = useGlobalContext();
-  const getAccount = useAccount();
+  const { login, logout } = useAccount();
 
   return (
     <div className="flex flex-col">
@@ -28,7 +28,9 @@ const Saver: NextPage = () => {
           className="bg-yellow-400/70 text-gray-800 px-10 py-3 cursor-pointer rounded-lg mx-2"
           onClick={async () => {
             const balance = await fetchBalance(user);
-            console.log({ balance: ethers.utils.formatEther(balance.balance) });
+            console.log({
+              balance: ethers.utils.formatEther(balance?.balance || 0),
+            });
           }}
         >
           get balance
@@ -36,10 +38,18 @@ const Saver: NextPage = () => {
         <button
           className="bg-yellow-400/70 text-gray-800 px-10 py-3 cursor-pointer rounded-lg mx-2"
           onClick={async () => {
-            const account = await getAccount();
+            const account = await login();
           }}
         >
           connect
+        </button>
+        <button
+          className="bg-yellow-400/70 text-gray-800 px-10 py-3 cursor-pointer rounded-lg mx-2"
+          onClick={async () => {
+            const account = await logout();
+          }}
+        >
+          logout
         </button>
       </div>
 
