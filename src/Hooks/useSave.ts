@@ -1,7 +1,5 @@
 import { ethers } from "ethers";
-import { EthereumProvider } from "hardhat/types";
 import MoneySaver from "../../artifacts/contracts/SavingContract.sol/MoneySaver.json";
-import useAccount from "./useAccount";
 import { useGlobalContext } from "./useGlobalContext";
 
 declare const window: Window &
@@ -13,7 +11,7 @@ const SavingContractAddress = "0x6767C11e0A68d9a37e031979d7fF8121f308b905";
 
 const useSave: Function = (): {} => {
   const { user } = useGlobalContext();
-  const { login } = useAccount();
+  // const { login } = useAccount();
 
   const fetchBalance: Function = async (address: string): Promise<any> => {
     if (!address) return;

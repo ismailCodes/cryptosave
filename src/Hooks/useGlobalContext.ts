@@ -1,17 +1,18 @@
+import { providers } from "ethers";
 import { createContext, useContext } from "react";
 
 export type GlobalContent = {
-  loggedIn: boolean;
-  setLoggedIn: (loggedIn: boolean) => void;
-  user: string;
-  setUser: (user: string) => void;
+  connect: () => void;
+  disconnect: () => void;
+  address: string;
+  web3Provider: providers.Web3Provider;
 };
 
 export const GlobalContext = createContext<GlobalContent>({
-  loggedIn: false,
-  user: "",
-  setLoggedIn: () => {},
-  setUser: () => {},
+  connect: () => {},
+  disconnect: () => {},
+  address: "",
+  web3Provider: null,
 });
 
 export const useGlobalContext = () => useContext(GlobalContext);

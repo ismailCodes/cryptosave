@@ -6,11 +6,12 @@ import { useEffect } from "react";
 import useAccount from "../Hooks/useAccount";
 import { useGlobalContext } from "../Hooks/useGlobalContext";
 import { ethers } from "ethers";
+import useWeb3 from "../Hooks/useWeb3";
 
 const Saver: NextPage = () => {
   const { fetchBalance, deposit } = useSave();
   const { user, loggedIn } = useGlobalContext();
-  const { login, logout } = useAccount();
+  const { connect, disconnect, address, web3Provider } = useWeb3();
 
   return (
     <div className="flex flex-col">
@@ -38,7 +39,7 @@ const Saver: NextPage = () => {
         <button
           className="bg-yellow-400/70 text-gray-800 px-10 py-3 cursor-pointer rounded-lg mx-2"
           onClick={async () => {
-            const account = await login();
+            const account = await connect();
           }}
         >
           connect
@@ -46,7 +47,7 @@ const Saver: NextPage = () => {
         <button
           className="bg-yellow-400/70 text-gray-800 px-10 py-3 cursor-pointer rounded-lg mx-2"
           onClick={async () => {
-            const account = await logout();
+            const account = await disconnect();
           }}
         >
           logout

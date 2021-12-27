@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from "react";
-import useAccount from "../Hooks/useAccount";
 import { useGlobalContext } from "../Hooks/useGlobalContext";
 import Button from "./Button";
 import HeroImage from "./HeroImage";
@@ -16,14 +15,14 @@ const Hero: FunctionComponent = () => {
 
   return (
     <PageWrapper>
-      <NavBar setShowModal={setShowModal} />
-      <Modal
+      <NavBar />
+      {/* <Modal
         show={showModal}
         onClose={setShowModal}
         title={"Deposit your Savings"}
-      >
-        <SavingForm />
-      </Modal>
+      > */}
+      {/* <SavingForm />
+      </Modal> */}
       <HeroImage />
       <HeroTitle />
     </PageWrapper>
