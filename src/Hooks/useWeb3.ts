@@ -1,5 +1,6 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { providers } from "ethers";
+import { Router, useRouter } from "next/router";
 import { useCallback, useEffect, useReducer } from "react";
 import Web3Modal from "web3modal";
 import { Web3StateType, Web3ActionType } from "../types/web3";
@@ -71,6 +72,8 @@ export default function useWeb3() {
 
     const signer = web3Provider.getSigner();
     const address = await signer.getAddress();
+
+    console.log({ address });
 
     const network = await web3Provider.getNetwork();
 

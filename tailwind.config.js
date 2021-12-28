@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         playFair: ["Playfair Display", "serif"],
+        openSans: ["Open Sans", "sans-serif"],
       },
     },
     plugins: [],

@@ -10,7 +10,7 @@ declare const window: Window &
 const SavingContractAddress = "0x6767C11e0A68d9a37e031979d7fF8121f308b905";
 
 const useSave: Function = (): {} => {
-  const { user } = useGlobalContext();
+  const { connect, address } = useGlobalContext();
   // const { login } = useAccount();
 
   const fetchBalance: Function = async (address: string): Promise<any> => {
@@ -41,9 +41,9 @@ const useSave: Function = (): {} => {
   };
 
   const deposit: Function = async (endTime: number): Promise<any> => {
-    console.log({ user });
+    console.log({ address });
     if (typeof window.ethereum !== "undefined") {
-      await login();
+      await connect();
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(
@@ -55,11 +55,11 @@ const useSave: Function = (): {} => {
 
       try {
         const transaction = await contract.deposit(endTime, {
-          from: user,
+          from: address,
           value: ethers.utils.parseEther("0.0001"),
           gasPrice,
           gasLimit: ethers.utils.hexlify(100000),
-          nonce: provider.getTransactionCount(user),
+          nonce: provider.getTransactionCount(address),
         });
         const txReceipt = await signer.sendTransaction(transaction);
         console.log({ txReceipt });

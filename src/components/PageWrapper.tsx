@@ -1,15 +1,10 @@
-import { FunctionComponent } from "react";
+import NavBar from "./NavBar";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-const PageWrapper: FunctionComponent<Props> = ({ children }) => {
+export default function PageWrapper({ children }) {
   return (
-    <div className="w-full h-screen relative text-white flex flex-col items-center font-playFair bg-black">
-      {children}
+    <div className="w-screen h-screen font-openSans relative hero-bg">
+      <NavBar />
+      <div className="container mx-auto px-4">{children}</div>
     </div>
   );
-};
-
-export default PageWrapper;
+}

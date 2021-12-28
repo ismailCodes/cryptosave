@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap");
-/* html {
-  font-family: "Slabo 27px", serif;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-.bgWrap {
-  background-image: url("/images/save.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top;
-  height: 90vh;
+.hero-bg {
+  background-color: #b8c6db;
+  background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  /* background-image: linear-gradient(to bottom right, #70e1f5, #ffd194); */
+  background-size: "cover";
+  background-position: "center";
+  background-repeat: "space";
 }
+
+/* (to right, #70e1f5, #ffd194); */
