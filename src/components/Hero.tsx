@@ -23,7 +23,7 @@ export default function Hero() {
           Watch video
         </button>
       </div>
-      <div className="absolute bottom-0 w-[180px] h-[45%] transform rotate-180">
+      <div className="absolute bottom-0 w-[170px] h-[45%] transform rotate-180">
         <Image src="/images/save.png" layout="fill" />
       </div>
     </div>
