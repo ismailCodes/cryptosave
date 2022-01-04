@@ -8,18 +8,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.5",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@walletconnect/web3-provider": "^1.7.0",
     "chai": "^4.3.4",
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.4.0",
+    "feather-icons-react": "^0.5.0",
     "hardhat": "^2.8.0",
     "next": "12.0.7",
     "react": "17.0.2",
+    "react-countdown": "^2.3.2",
     "react-datepicker": "^4.5.0",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.22.2",
-    "web3modal": "^1.9.4"
+    "react-hook-form": "^7.22.5",
+    "web3modal": "^1.9.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",

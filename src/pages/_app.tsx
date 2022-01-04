@@ -16,8 +16,6 @@ const Web3InitialState: Web3StateType = {
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const web3Utils = useWeb3();
-
   const [state, dispatch] = useReducer(Web3Reducer, Web3InitialState);
   const { provider, web3Provider, address, chainId } = state;
 
@@ -104,7 +102,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     [provider]
   );
 
-  // Auto connect to the cached provider
   useEffect(() => {
     console.log("effect connect");
     if (web3Modal.cachedProvider) {
@@ -127,7 +124,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
       };
 
-      // https://docs.ethers.io/v5/concepts/best-practices/#best-practices--network-changes
       const handleChainChanged = (_hexChainId: string) => {
         window.location.reload();
       };
@@ -142,7 +138,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       provider.on("chainChanged", handleChainChanged);
       provider.on("disconnect", handleDisconnect);
 
-      // Subscription Cleanup
       return () => {
         if (provider.removeListener) {
           provider.removeListener("accountsChanged", handleAccountsChanged);
