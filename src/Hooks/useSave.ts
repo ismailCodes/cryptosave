@@ -7,11 +7,10 @@ declare const window: Window &
     ethereum: any;
   };
 
-const SavingContractAddress = "0x6767C11e0A68d9a37e031979d7fF8121f308b905";
+const SavingContractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 const useSave: Function = (): {} => {
   const { connect, address } = useGlobalContext();
-  // const { login } = useAccount();
 
   const fetchBalance: Function = async (address: string): Promise<any> => {
     if (!address) return;
@@ -40,7 +39,10 @@ const useSave: Function = (): {} => {
     }
   };
 
-  const deposit: Function = async (endTime: number): Promise<any> => {
+  const deposit: Function = async (
+    amount: number,
+    endTime: number
+  ): Promise<any> => {
     console.log({ address });
     if (typeof window.ethereum !== "undefined") {
       await connect();
@@ -56,7 +58,7 @@ const useSave: Function = (): {} => {
       try {
         const transaction = await contract.deposit(endTime, {
           from: address,
-          value: ethers.utils.parseEther("0.0001"),
+          value: ethers.utils.parseEther(amount.toString()),
           gasPrice,
           gasLimit: ethers.utils.hexlify(100000),
           nonce: provider.getTransactionCount(address),
