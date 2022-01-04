@@ -56,6 +56,8 @@ const useSave: Function = (): {} => {
       const gasPrice = await provider.getGasPrice();
 
       try {
+        console.log("receipt 0");
+
         const transaction = await contract.deposit(endTime, {
           from: address,
           value: ethers.utils.parseEther(amount.toString()),
@@ -63,7 +65,11 @@ const useSave: Function = (): {} => {
           gasLimit: ethers.utils.hexlify(100000),
           nonce: provider.getTransactionCount(address),
         });
-        const txReceipt = await signer.sendTransaction(transaction);
+        console.log("receipt 1");
+        console.log({ transaction });
+
+        const txReceipt = await transaction.wait();
+        console.log("receipt 2");
         console.log({ txReceipt });
         return null;
       } catch (error) {
