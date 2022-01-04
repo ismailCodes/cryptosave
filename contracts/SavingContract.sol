@@ -8,8 +8,9 @@ contract MoneySaver {
     }
     address public owner;
     mapping(address => Saving) public balances;
+    uint256 daySeconds = 86400;
 
-    //requires tthe user to send a positive amount of ETH
+    //requires the user to send a positive amount of ETH
     modifier onlyPositive(uint256 _amount) {
         require(_amount > 0, "Only positive amount");
         _;
@@ -24,21 +25,15 @@ contract MoneySaver {
     modifier onlyValidTimeWithdraw() {
         require(
             block.timestamp > balances[msg.sender].endTime,
-            "You cannot withdraw before endtime"
+            "You cannot withdraw yet"
         );
-        _;
-    }
-
-    //requires the user not to have an already existing balance
-    modifier onlyValidBalance() {
-        require(balances[msg.sender].balance == 0, "You already have savings");
         _;
     }
 
     modifier balanceOrLess(uint256 _amount) {
         require(
             balances[msg.sender].balance >= _amount,
-            "You can only withdraw your balance or less"
+            "Withdraw your balance or less"
         );
         _;
     }
@@ -47,14 +42,13 @@ contract MoneySaver {
         owner = msg.sender;
     }
 
-    function deposit(uint256 _endTime)
-        public
-        payable
-        onlyPositive(msg.value)
-        onlyValidBalance
-    {
+    function deposit(uint256 _endTime) public payable onlyPositive(msg.value) {
         balances[msg.sender].balance += msg.value;
-        balances[msg.sender].endTime = block.timestamp + _endTime;
+        if (balances[msg.sender].endTime == 0) {
+            balances[msg.sender].endTime =
+                block.timestamp +
+                (_endTime * daySeconds);
+        }
     }
 
     function withdraw(uint256 _amount)
@@ -64,6 +58,10 @@ contract MoneySaver {
         balanceOrLess(_amount)
     {
         balances[msg.sender].balance -= _amount;
+        //if amount is equal to balance, then endTime is set to 0
+        if (balances[msg.sender].balance == 0) {
+            balances[msg.sender].endTime = 0;
+        }
         payable(msg.sender).transfer(_amount);
     }
 }
