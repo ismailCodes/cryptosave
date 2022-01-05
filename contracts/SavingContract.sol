@@ -8,7 +8,8 @@ contract MoneySaver {
     }
     address public owner;
     mapping(address => Saving) public balances;
-    uint256 internal daySeconds = 86400;
+
+    uint256 private daySeconds = 86400;
 
     //requires the user to send a positive amount of ETH
     modifier onlyPositive(uint256 _amount) {
