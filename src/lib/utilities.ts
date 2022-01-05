@@ -1,4 +1,4 @@
-export function ellipseAddress(address = "", width = 10): string {
+export function ellipseAddress(address = "", width = 5): string {
   if (!address) {
     return "";
   }
