@@ -132,13 +132,17 @@ const BalanceBox: FunctionComponent<IProps> = ({
         {endTime && Date.now() - endTime < 0 ? (
           <div className="w-full flex justify-center">
             <Countdown date={new Date(endTime)}>
-              {Number(balance) !== 0 ? (
+              {Number(balance) > 0 ? (
                 <button onClick={handleWithdraw}>Withdraw</button>
               ) : null}
             </Countdown>
           </div>
         ) : (
-          <button onClick={() => handleWithdraw()}>Withdraw</button>
+          <>
+            {Number(balance) > 0 ? (
+              <button onClick={() => handleWithdraw()}>Withdraw</button>
+            ) : null}
+          </>
         )}
       </div>
     </>
