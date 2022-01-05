@@ -10,11 +10,13 @@ const TxFinishedModal = ({
 }) => {
   return (
     <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
-      <div className="text-2xl text-gray-800">Transaction finished</div>
+      <div className="text-xl lg:text-2xl text-center lg:text-left text-gray-800">
+        Transaction finished
+      </div>
       <div className="w-full flex flex-col my-4 text-gray-900">
         <TxDetail _key="Tx Hash" value={transactionHash} />
         <TxDetail _key="Block Hash" value={blockHash} />
-        <TxDetail _key="Amount" value={amount} />
+        {amount ? <TxDetail _key="Amount" value={amount} unit="ETH" /> : null}
       </div>
       <div className="flex w-full items-center justify-between">
         <a

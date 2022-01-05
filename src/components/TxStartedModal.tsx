@@ -5,7 +5,7 @@ const TxStartedModal = ({ onCloseAction }) => {
   return (
     <>
       <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
-        <div className="text-2xl text-gray-800">
+        <div className="text-xl lg:text-2xl text-center lg:text-left text-gray-800">
           Your transaction has started
         </div>
       </div>
@@ -14,7 +14,7 @@ const TxStartedModal = ({ onCloseAction }) => {
           <FeatherIcon icon="loader" size="32" />
         </div>
       </div>
-      <div className="flex w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center mb-4">
         <SecondaryButton
           buttonText="Close"
           action={() => onCloseAction(false)}

@@ -11,7 +11,7 @@ interface Props {
 const UserAddrerss: FunctionComponent<Props> = ({ _href, address, _style }) => {
   return (
     <Link href={_href}>
-      <a className="text-sm text-center font-normal hover:underline cursor-pointer">
+      <a className="text-sm text-center font-normal hover:underline cursor-pointer text-gray-50 pt-4 lg:p-0">
         {ellipseAddress(address)}
       </a>
     </Link>

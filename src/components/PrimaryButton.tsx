@@ -13,7 +13,7 @@ const PrimaryButton: FunctionComponent<Props> = ({
 }) => {
   return (
     <button
-      className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-gray-200 bg-gray-800 cursor-pointer ${_style}`}
+      className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-gray-200 bg-gray-900 cursor-pointer ${_style}`}
       onClick={() => action()}
     >
       {buttonText}
