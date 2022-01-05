@@ -2,7 +2,6 @@ import "../../styles/globals.css";
 import type { AppProps } from "next/app";
 import { GlobalContext } from "../Hooks/useGlobalContext";
 import { useCallback, useEffect, useReducer } from "react";
-import useWeb3 from "../Hooks/useWeb3";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { Web3ActionType, Web3StateType } from "../types/web3";
