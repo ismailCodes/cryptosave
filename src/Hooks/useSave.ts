@@ -56,29 +56,58 @@ const useSave: Function = (): {} => {
       const gasPrice = await provider.getGasPrice();
 
       try {
-        console.log("receipt 0");
-
-        const transaction = await contract.deposit(endTime, {
+        const transaction = await contract.deposit(Date.now() + 2 * 60 * 1000, {
           from: address,
           value: ethers.utils.parseEther(amount.toString()),
           gasPrice,
           gasLimit: ethers.utils.hexlify(100000),
           nonce: provider.getTransactionCount(address),
         });
-        console.log("receipt 1");
-        console.log({ transaction });
 
-        const txReceipt = await transaction.wait();
-        console.log("receipt 2");
-        console.log({ txReceipt });
-        return null;
-      } catch (error) {
-        console.log({ error });
+        const receipt = await transaction.wait();
+
+        return { success: true, receipt };
+      } catch ({ code, message }) {
+        console.log("in error");
+        console.log({ code, message });
+        return { success: false, code, message };
       }
     }
   };
 
-  return { fetchBalance, deposit };
+  const withdrawAll: Function = async (): Promise<any> => {
+    console.log({ address });
+    if (typeof window.ethereum !== "undefined") {
+      await connect();
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        SavingContractAddress,
+        MoneySaver.abi,
+        signer
+      );
+      const gasPrice = await provider.getGasPrice();
+
+      try {
+        const transaction = await contract.withdrawAll({
+          from: address,
+          gasPrice,
+          gasLimit: ethers.utils.hexlify(100000),
+          nonce: provider.getTransactionCount(address),
+        });
+        console.log({ transaction });
+        const receipt = await transaction.wait();
+        console.log({ receipt });
+        return { success: true, receipt };
+      } catch ({ code, message }) {
+        console.log("in error");
+        console.log({ code, message });
+        return { success: false, code, message };
+      }
+    }
+  };
+
+  return { fetchBalance, deposit, withdrawAll };
 };
 
 export default useSave;
