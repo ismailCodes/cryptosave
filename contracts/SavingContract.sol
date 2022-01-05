@@ -30,6 +30,11 @@ contract MoneySaver {
         _;
     }
 
+    modifier onlyBalance() {
+        require(balances[msg.sender].balance > 0, "No money to withdraw");
+        _;
+    }
+
     constructor() {
         owner = msg.sender;
     }
@@ -37,13 +42,12 @@ contract MoneySaver {
     function deposit(uint256 _endTime) public payable onlyPositive(msg.value) {
         balances[msg.sender].balance += msg.value;
         if (balances[msg.sender].endTime == 0) {
-            balances[msg.sender].endTime =
-                block.timestamp +
-                (_endTime * daySeconds);
+            balances[msg.sender].endTime = _endTime;
+            block.timestamp + (_endTime * daySeconds);
         }
     }
 
-    function withdrawAll() public onlyValidTimeWithdraw {
+    function withdrawAll() public onlyBalance onlyValidTimeWithdraw {
         uint256 balance = balances[msg.sender].balance;
         balances[msg.sender].balance -= balance;
         balances[msg.sender].endTime = 0;
