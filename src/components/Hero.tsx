@@ -10,7 +10,7 @@ export default function Hero() {
         Make your crypto Saving easier
       </h1>
       <p className="text-xl lg:text-2xl text-gray-700 mt-3 text-center lg:text-center">
-        A decentralized, open-source, and free platform for saving your crypto.
+        A decentralized, open-source, and free platform for saving crypto.
       </p>
       <div className="flex items-center mt-8">
         <PrimaryButton buttonText="Get started" _style="mt-4 lg:mt-0 mx-3" />
