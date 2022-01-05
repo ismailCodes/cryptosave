@@ -31,7 +31,7 @@ const Savings: FunctionComponent = () => {
         console.log("balance", _balance);
         setSaving({
           balance: ethers.utils.formatEther(_balance.balance.toString()),
-          endTime: _balance.endTime.toNumber(),
+          endTime: _balance.endTime.toNumber() * 1000,
         });
       })();
     }
@@ -41,11 +41,7 @@ const Savings: FunctionComponent = () => {
 
   return (
     <PageWrapper>
-      <Modal
-        show={isModalOpen}
-        onClose={setIsModalOpen}
-        title="Add Balance to your savings"
-      >
+      <Modal show={isModalOpen} onClose={setIsModalOpen}>
         <SavingForm setIsModalOpen={setIsModalOpen} setLastTx={setLastTx} />
       </Modal>
       <div className="container w-full md:w-2/3 lg:w-1/2 md:mx-8 lg:mx-20">
@@ -55,6 +51,7 @@ const Savings: FunctionComponent = () => {
               balance={balance}
               endTime={endTime}
               setIsModalOpen={setIsModalOpen}
+              setLastTx={setLastTx}
             />
           ) : (
             <Loadingbalance />

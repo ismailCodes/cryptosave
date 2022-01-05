@@ -5,15 +5,9 @@ interface ModalProps {
   show: boolean;
   onClose: (arg0: boolean) => void;
   children: React.ReactNode;
-  title: string;
 }
 
-const Modal: FunctionComponent<ModalProps> = ({
-  show,
-  onClose,
-  children,
-  title,
-}) => {
+const Modal: FunctionComponent<ModalProps> = ({ show, onClose, children }) => {
   const [isBrowser, setIsBrowser] = useState<boolean>(false);
 
   useEffect(() => {

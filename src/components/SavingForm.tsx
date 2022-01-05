@@ -9,6 +9,10 @@ import SecondaryButton from "./SecondaryButton";
 import TxDetail from "./TxDetail";
 import PrimaryButton from "./PrimaryButton";
 import { useRouter } from "next/router";
+import { IAction, ITransaction } from "../interfaces";
+import TxStartedModal from "./TxStartedModal";
+import TxErrorModal from "./TxErrorModal";
+import TxFinishedModal from "./TxFinishedModal";
 
 const schema = yup.object().shape({
   amount: yup.number().required(),
@@ -23,22 +27,6 @@ type Inputs = {
 interface Props {
   setIsModalOpen: (isOpen: boolean) => void;
   setLastTx: (tx: string) => void;
-}
-
-interface ITransaction {
-  hasStarted: boolean;
-  isFinished: boolean;
-  transactionHash: string;
-  blockHash: string;
-  amount: string;
-  isError: boolean;
-  errorMessage: string;
-  errorCode: number;
-}
-
-interface IAction {
-  type: "SET_TX_HAS_STARTED" | "SET_TX_IS_FINISHED" | "SET_TX_ERROR";
-  payload?: Partial<ITransaction>;
 }
 
 const transactionInitialState: ITransaction = {
@@ -131,42 +119,15 @@ const SavingForm: FunctionComponent<Props> = ({
   return (
     <>
       {transaction.isError && (
-        <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
-          <div className="text-2xl text-gray-800">An error occured</div>
-          <div className="text-md my-4 text-gray-900">
-            {transaction.errorMessage}
-          </div>
-          <div className="flex w-full items-center justify-center">
-            <SecondaryButton
-              buttonText="Close"
-              action={() => setIsModalOpen(false)}
-              _style="w-1/2 mr-2"
-            />
-          </div>
-        </div>
+        <TxErrorModal
+          errorMessage={transaction.errorMessage}
+          onCloseAction={setIsModalOpen}
+        />
       )}
       {transaction.hasStarted &&
         !transaction.isFinished &&
         !transaction.isError && (
-          <>
-            <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
-              <div className="text-2xl text-gray-800">
-                Your transaction has started
-              </div>
-            </div>
-            <div className="w-full h-32 flex justify-center items-center">
-              <div className="animate-spin w-20 h-20 flex justify-center items-center">
-                <FeatherIcon icon="loader" size="32" />
-              </div>
-            </div>
-            <div className="flex w-full items-center justify-center">
-              <SecondaryButton
-                buttonText="Close"
-                action={() => setIsModalOpen(false)}
-                _style="w-1/2 mr-2"
-              />
-            </div>
-          </>
+          <TxStartedModal onCloseAction={setIsModalOpen} />
         )}
       {!transaction.hasStarted &&
         !transaction.isFinished &&
@@ -218,28 +179,12 @@ const SavingForm: FunctionComponent<Props> = ({
           </>
         )}
       {transaction.isFinished && (
-        <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
-          <div className="text-2xl text-gray-800">Transaction finished</div>
-          <div className="w-full flex flex-col my-4 text-gray-900">
-            <TxDetail _key="Tx Hash" value={transaction.transactionHash} />
-            <TxDetail _key="Block Hash" value={transaction.blockHash} />
-            <TxDetail _key="Amount" value={transaction.amount} />
-          </div>
-          <div className="flex w-full items-center justify-between">
-            <a
-              target="_blank"
-              className={`inline-block text-sm py-3 leading-none rounded-md text-center text-gray-800 bg-transparent border border-gray-800 w-1/2 px-2 mr-2`}
-              href={`${process.env.NEXT_PUBLIC_RINKEBY_BLOCK_EXPLORER_BASE_URL}/tx/${transaction.transactionHash}`}
-            >
-              View on explorer
-            </a>
-            <PrimaryButton
-              buttonText="Close"
-              action={() => setIsModalOpen(false)}
-              _style="w-1/2"
-            />
-          </div>
-        </div>
+        <TxFinishedModal
+          onCloseAction={setIsModalOpen}
+          transactionHash={transaction.transactionHash}
+          blockHash={transaction.blockHash}
+          amount={transaction.amount}
+        />
       )}
     </>
   );
