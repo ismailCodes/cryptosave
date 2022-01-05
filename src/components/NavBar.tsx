@@ -19,7 +19,11 @@ export default function NavBar() {
       }`}
     >
       <div className="flex items-center flex-shrink-0 text-gray-900 font-black mr-6">
-        <span className="font-bold text-3xl tracking-wide">cryptosave</span>
+        <Link href="/">
+          <a className="font-bold text-3xl tracking-wide cursor-pointer">
+            cryptosave
+          </a>
+        </Link>
       </div>
       <div className="block lg:hidden">
         <button
