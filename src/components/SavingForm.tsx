@@ -50,10 +50,11 @@ const SavingForm: FunctionComponent<Props> = ({
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<Inputs>({ resolver: yupResolver(schema) });
 
-  const { address } = useGlobalContext();
+  const { address, balance: networkBalance } = useGlobalContext();
 
   const { deposit } = useSave();
 
@@ -143,14 +144,27 @@ const SavingForm: FunctionComponent<Props> = ({
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="w-full my-2 flex justify-between">
-                <input
-                  className={`${
-                    showDaysInput ? "w-2/3" : "w-full"
-                  } px-2 py-1 outline-none rounded-md border border-gray-300 text-md `}
-                  type="text"
-                  placeholder="Amount of ether"
-                  {...register("amount", { required: true })}
-                />
+                <div
+                  className={`${showDaysInput ? "w-2/3" : "w-full"} relative`}
+                >
+                  <input
+                    className={`w-full px-2 py-1 outline-none rounded-md border border-gray-300 text-md`}
+                    type="text"
+                    placeholder="Amount of ether"
+                    {...register("amount", { required: true })}
+                  />
+                  <div
+                    className="absolute right-3 top-1 cursor-pointer text-zinc-800 font-semibold"
+                    onClick={() =>
+                      setValue(
+                        "amount",
+                        (Number(networkBalance) - 0.0001).toString()
+                      )
+                    }
+                  >
+                    MAX
+                  </div>
+                </div>
                 {showDaysInput ? (
                   <input
                     className="w-1/4 px-2 py-1 outline-none rounded-md border border-gray-300 text-md"
