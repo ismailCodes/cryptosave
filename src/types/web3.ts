@@ -3,6 +3,7 @@ export type Web3StateType = {
   web3Provider?: any;
   address?: string;
   chainId?: number;
+  balance?: string;
 };
 
 export type Web3ActionType =
@@ -12,6 +13,7 @@ export type Web3ActionType =
       web3Provider?: Web3StateType["web3Provider"];
       address?: Web3StateType["address"];
       chainId?: Web3StateType["chainId"];
+      balance: string;
     }
   | {
       type: "SET_ADDRESS";
@@ -24,3 +26,22 @@ export type Web3ActionType =
   | {
       type: "RESET_WEB3_PROVIDER";
     };
+
+export interface IChainData {
+  name: string;
+  short_name: string;
+  chain: string;
+  network: string;
+  chain_id: number;
+  network_id: number;
+  rpc_url: string;
+  native_currency: IAssetData;
+}
+
+export interface IAssetData {
+  symbol: string;
+  name: string;
+  decimals: string;
+  contractAddress: string;
+  balance?: string;
+}

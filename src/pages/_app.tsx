@@ -6,6 +6,8 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { Web3ActionType, Web3StateType } from "../types/web3";
 import { providers } from "ethers";
+import { getChainData } from "../lib/utilities";
+import { ethers } from "ethers";
 
 const Web3InitialState: Web3StateType = {
   provider: null,
@@ -16,7 +18,7 @@ const Web3InitialState: Web3StateType = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [state, dispatch] = useReducer(Web3Reducer, Web3InitialState);
-  const { provider, web3Provider, address, chainId } = state;
+  const { provider, web3Provider, address, chainId, balance } = state;
 
   const providerOptions = {
     walletconnect: {
@@ -37,6 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
   }
 
+  const chainData = getChainData(chainId);
+
   function Web3Reducer(
     state: Web3StateType,
     action: Web3ActionType
@@ -49,6 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           web3Provider: action.web3Provider,
           address: action.address,
           chainId: action.chainId,
+          balance: action.balance,
         };
       case "SET_ADDRESS":
         return {
@@ -74,6 +79,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     const signer = web3Provider.getSigner();
     const address = await signer.getAddress();
+    const balance = await signer.getBalance();
 
     console.log({ address });
 
@@ -85,6 +91,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       web3Provider,
       address,
       chainId: network.chainId,
+      balance: Number(ethers.utils.formatEther(balance)).toFixed(4),
     });
   }, []);
 
@@ -149,7 +156,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <GlobalContext.Provider
-      value={{ connect, disconnect, address, web3Provider }}
+      value={{ connect, disconnect, address, web3Provider, chainData, balance }}
     >
       <Component {...pageProps} />
     </GlobalContext.Provider>
