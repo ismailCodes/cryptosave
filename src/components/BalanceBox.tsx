@@ -116,7 +116,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
           />
         )}
       </Modal>
-      <div className="w-full md:w-80 rounded-md h-36 px-5 py-3 flex flex-col justify-between items-center bg-gray-900 text-gray-100">
+      <div className="w-full md:w-80 rounded-md h-36 px-5 py-3 flex flex-col justify-between items-center bg-zinc-900 text-gray-100">
         <div className="w-full items-center">
           <div className="flex justify-between w-full">
             <div className="text-md">Ethereum</div>

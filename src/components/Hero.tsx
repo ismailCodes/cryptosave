@@ -6,7 +6,7 @@ import SecondaryButton from "./SecondaryButton";
 export default function Hero() {
   return (
     <div className="flex flex-col items-center justify-start mt-7 lg:mt-10">
-      <h1 className="text-4xl lg:text-9xl font-black text-gray-900 mb-4 text-center tracking-wider">
+      <h1 className="text-4xl lg:text-7xl xl:text-9xl font-black text-gray-900 mb-4 text-center tracking-wider">
         Make your crypto Saving easier
       </h1>
       <p className="text-xl lg:text-2xl text-gray-700 mt-3 text-center lg:text-center">

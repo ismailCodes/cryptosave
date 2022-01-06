@@ -1,7 +1,7 @@
 import { IChainData } from "../types/web3";
 import supportedChains from "./chains";
 
-export function ellipseAddress(address = "", width = 5): string {
+export function ellipseAddress(address = "", width = 7): string {
   if (!address) {
     return "";
   }
