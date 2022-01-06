@@ -6,7 +6,7 @@ const TxStartedModal = ({ onCloseAction }) => {
     <>
       <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
         <div className="text-xl lg:text-2xl text-center lg:text-left text-gray-800">
-          Your transaction has started
+          Waiting for confirmation...
         </div>
       </div>
       <div className="w-full h-32 flex justify-center items-center">
