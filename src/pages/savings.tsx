@@ -42,7 +42,11 @@ const Savings: FunctionComponent = () => {
   return (
     <PageWrapper>
       <Modal show={isModalOpen} onClose={setIsModalOpen}>
-        <SavingForm setIsModalOpen={setIsModalOpen} setLastTx={setLastTx} />
+        <SavingForm
+          setIsModalOpen={setIsModalOpen}
+          setLastTx={setLastTx}
+          showDaysInput={Number(balance) == 0}
+        />
       </Modal>
       <div className="container w-full md:w-2/3 lg:w-1/2 md:mx-8 lg:mx-20">
         <div className="flex flex-wrap">

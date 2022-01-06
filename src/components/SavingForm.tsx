@@ -27,6 +27,7 @@ type Inputs = {
 interface Props {
   setIsModalOpen: (isOpen: boolean) => void;
   setLastTx: (tx: string) => void;
+  showDaysInput: boolean;
 }
 
 const transactionInitialState: ITransaction = {
@@ -43,6 +44,7 @@ const transactionInitialState: ITransaction = {
 const SavingForm: FunctionComponent<Props> = ({
   setIsModalOpen,
   setLastTx,
+  showDaysInput,
 }) => {
   const {
     register,
@@ -142,17 +144,21 @@ const SavingForm: FunctionComponent<Props> = ({
             >
               <div className="w-full my-2 flex justify-between">
                 <input
-                  className="w-2/3 px-2 py-1 outline-none rounded-md border border-gray-300 text-md"
+                  className={`${
+                    showDaysInput ? "w-2/3" : "w-full"
+                  } px-2 py-1 outline-none rounded-md border border-gray-300 text-md `}
                   type="text"
                   placeholder="Amount of ether"
                   {...register("amount", { required: true })}
                 />
-                <input
-                  className="w-1/4 px-2 py-1 outline-none rounded-md border border-gray-300 text-md"
-                  type="text"
-                  placeholder="Days"
-                  {...register("days", { required: true })}
-                />
+                {showDaysInput ? (
+                  <input
+                    className="w-1/4 px-2 py-1 outline-none rounded-md border border-gray-300 text-md"
+                    type="text"
+                    placeholder="Days"
+                    {...register("days", { required: true })}
+                  />
+                ) : null}
               </div>
               {errors.amount && (
                 <span className="text-sm text-red-500">
