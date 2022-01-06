@@ -7,7 +7,7 @@ declare const window: Window &
     ethereum: any;
   };
 
-const GAS_LIMIT = 30000000;
+const GAS_LIMIT = 3000000;
 const SavingContractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 const useSave: Function = (): {} => {
@@ -24,7 +24,6 @@ const useSave: Function = (): {} => {
         MoneySaver.abi,
         provider
       );
-      const signer = provider.getSigner(address);
       try {
         const balance = await contract.balances(
           ethers.utils.getAddress(address)

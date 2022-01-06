@@ -1,14 +1,10 @@
-import { FunctionComponent, useEffect, useReducer, useState } from "react";
+import { FunctionComponent, useReducer } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useGlobalContext } from "../Hooks/useGlobalContext";
 import useSave from "../Hooks/useSave";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FeatherIcon from "feather-icons-react";
 import SecondaryButton from "./SecondaryButton";
-import TxDetail from "./TxDetail";
-import PrimaryButton from "./PrimaryButton";
-import { useRouter } from "next/router";
 import { IAction, ITransaction } from "../interfaces";
 import TxStartedModal from "./TxStartedModal";
 import TxErrorModal from "./TxErrorModal";
@@ -57,8 +53,6 @@ const SavingForm: FunctionComponent<Props> = ({
   const { address, balance: networkBalance } = useGlobalContext();
 
   const { deposit } = useSave();
-
-  const router = useRouter();
 
   const transactionReducer = (state, action: Partial<IAction>) => {
     switch (action.type) {
@@ -165,14 +159,15 @@ const SavingForm: FunctionComponent<Props> = ({
                     MAX
                   </div>
                 </div>
-                {showDaysInput ? (
-                  <input
-                    className="w-1/4 px-2 py-1 outline-none rounded-md border border-gray-300 text-md"
-                    type="text"
-                    placeholder="Days"
-                    {...register("days", { required: true })}
-                  />
-                ) : null}
+                <input
+                  className={`w-1/4 px-2 py-1 outline-none rounded-md border border-gray-300 text-md ${
+                    !showDaysInput ? "hidden" : "block"
+                  }`}
+                  type="text"
+                  defaultValue={1}
+                  placeholder="Days"
+                  {...register("days", { required: showDaysInput })}
+                />
               </div>
               {errors.amount && (
                 <span className="text-sm text-red-500">

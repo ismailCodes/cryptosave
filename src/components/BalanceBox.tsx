@@ -40,6 +40,10 @@ const withdrawReducer = (state, action) => {
         isError: true,
         errorMessage: action.payload.errorMessage,
       };
+    case "RESET_TX":
+      return {
+        ...withdrawalInitialState,
+      };
     default:
       return state;
   }
@@ -100,6 +104,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
           <TxErrorModal
             errorMessage={withdrawal.errorMessage}
             onCloseAction={setWithdrawModalOpen}
+            reset={() => dispatch({ type: "RESET_TX" })}
           />
         )}
         {withdrawal.hasStarted &&
@@ -113,6 +118,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
             transactionHash={withdrawal.transactionHash}
             blockHash={withdrawal.blockHash}
             amount={withdrawal.amount}
+            reset={() => dispatch({ type: "RESET_TX" })}
           />
         )}
       </Modal>

@@ -7,6 +7,7 @@ const TxFinishedModal = ({
   transactionHash,
   blockHash,
   amount,
+  reset,
 }) => {
   return (
     <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
@@ -28,7 +29,10 @@ const TxFinishedModal = ({
         </a>
         <PrimaryButton
           buttonText="Close"
-          action={() => onCloseAction(false)}
+          action={() => {
+            onCloseAction(false);
+            reset();
+          }}
           _style="w-1/2"
         />
       </div>
