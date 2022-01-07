@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useGlobalContext } from "../Hooks/useGlobalContext";
-import { ellipseAddress } from "../lib/utilities";
 import NetworkBalance from "./NetworkBalance";
-import PrimaryButton from "./PrimaryButton";
 import UserAddrerss from "./UserAddress";
 
 export default function NavBar() {
@@ -16,7 +14,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`flex z-50 w-full items-center justify-between flex-wrap p-5 lg:px-8 xl:px-20 bg-zinc-900 mb-6`}
+      className={`flex z-50 w-full absolute items-center justify-between flex-wrap p-5 lg:px-8 xl:px-20 bg-zinc-900 mb-6`}
     >
       <div className="flex items-center flex-shrink-0 text-gray-50 font-black mr-6">
         <Link href="/">
