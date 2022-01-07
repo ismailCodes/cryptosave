@@ -104,7 +104,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
           <TxErrorModal
             errorMessage={withdrawal.errorMessage}
             onCloseAction={setWithdrawModalOpen}
-            reset={() => dispatch({ type: "RESET_TX" })}
+            _reset={dispatch}
           />
         )}
         {withdrawal.hasStarted &&
@@ -118,7 +118,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
             transactionHash={withdrawal.transactionHash}
             blockHash={withdrawal.blockHash}
             amount={withdrawal.amount}
-            reset={() => dispatch({ type: "RESET_TX" })}
+            _reset={dispatch}
           />
         )}
       </Modal>
