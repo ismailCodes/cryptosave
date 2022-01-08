@@ -3,7 +3,7 @@ import FeatherIcon from "feather-icons-react";
 
 const HowTo: FunctionComponent = () => {
   return (
-    <div className="bg-zinc-900 w-full flex justify-center items-center py-10 lg:py-48 flex-wrap">
+    <div className="bg-zinc-900 w-full flex justify-center items-center py-10 lg:pb-48 lg:pt-28 flex-wrap">
       <div className="h-80 relative aspect-square bg-gradient-to-br from-indigo-900 to-blue-800 rounded-2xl rounded-tr-[50px] mx-5 shadow-xl shadow-blue-500/5 px-8 py-2 border border-zinc-50/5 mt-20">
         <div className="absolute -left-[3px] top-10 bg-zinc-50 h-28 w-[6px] rounded-full"></div>
         <div className="flex justify-between">
