@@ -5,7 +5,6 @@ import useSave from "../Hooks/useSave";
 import { IWithdraw } from "../interfaces";
 import { useGlobalContext } from "../Hooks/useGlobalContext";
 import Modal from "./Modal";
-import SecondaryButton from "./SecondaryButton";
 import TxErrorModal from "./TxErrorModal";
 import TxStartedModal from "./TxStartedModal";
 import TxFinishedModal from "./TxFinishedModal";
