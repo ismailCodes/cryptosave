@@ -15,11 +15,12 @@ const TxStartedModal = ({ onCloseAction }) => {
         </div>
       </div>
       <div className="flex w-full items-center justify-center mb-4">
-        <SecondaryButton
-          buttonText="Close"
-          action={() => onCloseAction(false)}
-          _style="w-1/2 mr-2"
-        />
+        <button
+          className="w-1/2 mr-2 bg-transparent text-zinc-900 border border-zinc-900 rounded-md my-3 py-2"
+          onClick={() => onCloseAction(false)}
+        >
+          Cancel
+        </button>
       </div>
     </>
   );

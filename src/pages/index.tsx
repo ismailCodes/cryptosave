@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Hero from "../components/Hero";
+import HowTo from "../components/HowTo";
 import PageWrapper from "../components/PageWrapper";
 
 const Home: NextPage = () => {
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       <PageWrapper>
         <Hero />
       </PageWrapper>
+      <HowTo />
     </>
   );
 };

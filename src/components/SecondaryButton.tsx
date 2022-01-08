@@ -13,7 +13,7 @@ const SecondaryButton: FunctionComponent<Props> = ({
 }) => {
   return (
     <button
-      className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-gray-800 bg-transparent border border-gray-800 ${_style}`}
+      className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-zinc-50 bg-transparent border border-zinc-50 ${_style}`}
       onClick={() => action()}
     >
       {buttonText}

@@ -122,7 +122,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
           />
         )}
       </Modal>
-      <div className="w-full md:w-80 rounded-md h-36 px-5 py-3 flex flex-col justify-between items-center bg-zinc-900 text-gray-100 shadow-xl">
+      <div className="w-full md:w-80 rounded-md h-36 px-5 py-3 flex flex-col justify-between items-center bg-zinc-50 text-zinc-900 shadow-xl">
         <div className="w-full items-center">
           <div className="flex justify-between w-full">
             <div className="text-md">Ethereum</div>
@@ -130,7 +130,7 @@ const BalanceBox: FunctionComponent<IProps> = ({
               className="cursor-pointer"
               onClick={() => setIsModalOpen(true)}
             >
-              <FeatherIcon icon="plus-square" fill="black" />
+              <FeatherIcon icon="plus-square" fill="white" />
             </div>
           </div>
           <div className="text-2xl text-center">{balance} ETH</div>

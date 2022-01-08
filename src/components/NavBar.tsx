@@ -14,7 +14,9 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`flex z-50 w-full absolute items-center justify-between flex-wrap p-5 lg:px-8 xl:px-20 bg-zinc-900 mb-6`}
+      className={`flex z-50 w-full absolute items-center justify-between flex-wrap p-5 lg:px-8 xl:px-20 ${
+        isOpen ? "bg-zinc-800" : "bg-gradient-to-b from-zinc-900 to-transparent"
+      } mb-6 border-b border-zinc-50 lg:border-none`}
     >
       <div className="flex items-center flex-shrink-0 text-gray-50 font-black mr-6">
         <Link href="/">
@@ -25,7 +27,7 @@ export default function NavBar() {
       </div>
       <div className="block lg:hidden">
         <button
-          className="flex items-center px-3 py-2 border rounded text-gray-50 border-zinc-900"
+          className="flex items-center px-3 py-2 border rounded text-gray-50 border-zinc-50"
           onClick={toggle}
         >
           <svg

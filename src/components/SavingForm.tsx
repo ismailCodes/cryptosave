@@ -119,6 +119,7 @@ const SavingForm: FunctionComponent<Props> = ({
         <TxErrorModal
           errorMessage={transaction.errorMessage}
           onCloseAction={setIsModalOpen}
+          _reset={dispatch}
         />
       )}
       {transaction.hasStarted &&
@@ -131,7 +132,7 @@ const SavingForm: FunctionComponent<Props> = ({
         !transaction.isError && (
           <>
             <div className="w-full flex flex-col pb-2 px-3 justify-centertext-gray-500">
-              <div className="text-2xl text-gray-800">Deposit crypto</div>
+              <div className="text-2xl text-zinc-900">Deposit crypto</div>
             </div>
             <form
               className="w-full flex flex-col"
@@ -181,12 +182,13 @@ const SavingForm: FunctionComponent<Props> = ({
               )}
 
               <div className="flex justify-between items-center">
-                <SecondaryButton
-                  buttonText="Cancel"
-                  action={() => setIsModalOpen(false)}
-                  _style="w-1/2 mr-2"
-                />
-                <button className="w-1/2 bg-gray-900 text-gray-50 rounded-md my-3 py-2">
+                <button
+                  className="w-1/2 mr-2 bg-transparent text-zinc-900 border border-zinc-900 rounded-md my-3 py-2"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button className="w-1/2 bg-zinc-900 text-zinc-50 rounded-md my-3 py-2">
                   Deposit
                 </button>
               </div>
@@ -199,6 +201,7 @@ const SavingForm: FunctionComponent<Props> = ({
           transactionHash={transaction.transactionHash}
           blockHash={transaction.blockHash}
           amount={transaction.amount}
+          _reset={dispatch}
         />
       )}
     </>

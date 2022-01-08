@@ -48,8 +48,8 @@ const Savings: FunctionComponent = () => {
           showDaysInput={Number(balance) == 0}
         />
       </Modal>
-      <div className="container w-full md:w-2/3 lg:w-1/2 md:mx-8 lg:mx-20">
-        <div className="flex flex-wrap">
+      <div className="container w-full pt-20 md:w-2/3 lg:w-1/2 md:mx-8 lg:mx-20">
+        <div className="flex w-full flex-wrap p-5">
           {balance !== null && endTime !== null ? (
             <BalanceBox
               balance={balance}

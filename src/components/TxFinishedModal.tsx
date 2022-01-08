@@ -22,20 +22,18 @@ const TxFinishedModal = ({
       <div className="flex w-full items-center justify-between">
         <a
           target="_blank"
-          className={`inline-block text-sm py-3 leading-none rounded-md text-center text-gray-800 bg-transparent border border-gray-800 w-1/2 px-2 mr-2`}
+          className={`inline-block text-sm py-3 leading-none rounded-md text-center text-zinc-900 bg-transparent border border-zinc-900 w-1/2 px-2 mr-2`}
           href={`${process.env.NEXT_PUBLIC_RINKEBY_BLOCK_EXPLORER_BASE_URL}/tx/${transactionHash}`}
         >
           View on explorer
         </a>
-        <PrimaryButton
-          buttonText="Close"
-          action={() => {
-            onCloseAction(false);
-            _reset({ type: "RESET_TX" });
-          }}
-          _style="w-1/2"
-        />
       </div>
+      <button
+        className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-zinc-50 bg-zinc-900`}
+        onClick={() => onCloseAction(false)}
+      >
+        Close
+      </button>
     </div>
   );
 };
