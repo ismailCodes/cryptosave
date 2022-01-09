@@ -13,3 +13,8 @@
   background-position: "center";
   background-repeat: "space";
 }
+
+#__next {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
