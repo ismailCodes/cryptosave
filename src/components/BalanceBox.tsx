@@ -121,10 +121,15 @@ const BalanceBox: FunctionComponent<IProps> = ({
           />
         )}
       </Modal>
-      <div className="w-full md:w-80 rounded-md h-36 px-5 py-3 flex flex-col justify-between items-center bg-zinc-50 text-zinc-900 shadow-xl">
+      <div className="w-full md:w-80 rounded-md h-36 px-5 py-3 flex flex-col justify-between items-center bg-zinc-50 text-zinc-900 shadow-xl relative">
+        <div className="absolute -top-[2px] right-10 h-[6px] w-20 bg-blue-600 rounded-full"></div>
+        <div className="absolute transform rotate-90 -left-8 top-12 h-[6px] w-16 bg-blue-600 rounded-full"></div>
         <div className="w-full items-center">
           <div className="flex justify-between w-full">
-            <div className="text-md">Ethereum</div>
+            <div className="text-md relative">
+              Ethereum{" "}
+              <span className="bg-zinc-900 w-16 rounded-full absolute h-[2px] bottom-0 left-0"></span>
+            </div>
             <div
               className="cursor-pointer"
               onClick={() => setIsModalOpen(true)}

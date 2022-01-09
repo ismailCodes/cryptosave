@@ -27,13 +27,13 @@ const TxFinishedModal = ({
         >
           View on explorer
         </a>
+        <button
+          className={`inline-block w-1/2 text-sm px-8 py-3 leading-none rounded-md text-zinc-50 bg-zinc-900`}
+          onClick={() => onCloseAction(false)}
+        >
+          Close
+        </button>
       </div>
-      <button
-        className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-zinc-50 bg-zinc-900`}
-        onClick={() => onCloseAction(false)}
-      >
-        Close
-      </button>
     </div>
   );
 };

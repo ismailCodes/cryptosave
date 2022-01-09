@@ -11,8 +11,8 @@ const UserNotConnected: FunctionComponent = () => {
 
   return (
     <PageWrapper>
-      <div className="w-full flex flex-col justify-center items-center mt-10">
-        <div className="w-full font-base text-2xl text-gray-800 text-center">
+      <div className="w-full flex flex-col justify-center items-center mt-20">
+        <div className="w-full font-base text-2xl text-zinc-50 text-center">
           You should be connected to access your savings
         </div>
         <div className="mt-4">

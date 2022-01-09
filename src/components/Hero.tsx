@@ -15,9 +15,9 @@ export default function Hero() {
       <p className="text-xl lg:text-xl text-zinc-100 mt-3 text-center lg:text-center">
         A decentralized, open-source, and free platform for saving crypto.
       </p>
-      <div className="flex lg:justify-center w-full mt-8">
+      <a href="#how-to" className="flex lg:justify-center w-full mt-8">
         <CercleButton buttonText="Get started" />
-      </div>
+      </a>
       <div
         className="absolute bottom-0 lg:bottom-10 w-[120px] h-[40%] md:w[150] 
                       md:h-[300px] lg:w-[110px] lg:h-[270px] xl:w-[150px] xl:h-[360px] 2xl:w-[180px]

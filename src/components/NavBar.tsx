@@ -79,18 +79,18 @@ export default function NavBar() {
           ) : (
             <div className="flex justify-center lg:justify-end items-center z-50">
               <button
-                className="block lg:ml-auto mt-4 text-md lg:inline-block lg:mt-0 text-gray-50 font-normal hover:text-gray-300 w-1/6 cursor-pointer"
+                className="inline-block text-sm px-8 py-3 leading-none rounded-md text-zinc-900 bg-gray-50 mt-2 lg:mt-0 mx-3"
                 onClick={() => connect()}
               >
-                Log in
+                Connect
               </button>
-              {isOpen ? null : (
+              {/* {isOpen ? null : (
                 <button
                   className={`inline-block text-sm px-8 py-3 leading-none rounded-md text-zinc-900 bg-gray-50 mt-2 lg:mt-0 mx-3`}
                 >
                   Get started
                 </button>
-              )}
+              )} */}
             </div>
           )}
         </div>

@@ -7,7 +7,7 @@ import PageWrapper from "../components/PageWrapper";
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div className="scroll-smooth">
       <Head>
         <link
           rel="shortcut icon"
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       </PageWrapper>
       <HowTo />
       <Footer />
-    </>
+    </div>
   );
 };
 
